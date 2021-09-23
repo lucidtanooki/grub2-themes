@@ -14,7 +14,7 @@ THEME_DIR="/usr/share/grub/themes"
 REO_DIR="$(cd $(dirname $0) && pwd)"
 }
 
-THEME_VARIANTS=('tela' 'vimix' 'stylish' 'slaze' 'whitesur')
+THEME_VARIANTS=('kawaiki')
 ICON_VARIANTS=('color' 'white' 'whitesur')
 SCREEN_VARIANTS=('1080p' '2k' '4k' 'ultrawide' 'ultrawide2k')
 
@@ -56,7 +56,7 @@ usage() {
   printf "%s\n" "Usage: ${0##*/} [OPTIONS...]"
   printf "\n%s\n" "OPTIONS:"
   printf "  %-25s%s\n" "-b, --boot" "install grub theme into /boot/grub/themes"
-  printf "  %-25s%s\n" "-t, --theme" "theme variant(s) [tela|vimix|stylish|slaze|whitesur] (default is tela)"
+  printf "  %-25s%s\n" "-t, --theme" "theme variant(s) [kawaiki] (default is kawaiki)"
   printf "  %-25s%s\n" "-i, --icon" "icon variant(s) [color|white|whitesur] (default is color)"
   printf "  %-25s%s\n" "-s, --screen" "screen display variant(s) [1080p|2k|4k|ultrawide|ultrawide2k] (default is 1080p)"
   printf "  %-25s%s\n" "-r, --remove" "Remove theme (must add theme name option)"
@@ -92,13 +92,13 @@ install() {
     # Don't preserve ownership because the owner will be root, and that causes the script to crash if it is ran from terminal by sudo
     cp -a --no-preserve=ownership "${REO_DIR}/common/"{*.png,*.pf2} "${THEME_DIR}/${theme}"
     cp -a --no-preserve=ownership "${REO_DIR}/config/theme-${screen}.txt" "${THEME_DIR}/${theme}/theme.txt"
-    cp -a --no-preserve=ownership "${REO_DIR}/backgrounds/${screen}/background-${theme}.jpg" "${THEME_DIR}/${theme}/background.jpg"
+    cp -a --no-preserve=ownership "${REO_DIR}/backgrounds/${screen}/background-${theme}.png" "${THEME_DIR}/${theme}/background.png"
 
     # Use custom background.jpg as grub background image
-    if [[ -f "${REO_DIR}/background.jpg" ]]; then
-      prompt -w "\n Using custom background.jpg as grub background image..."
-      cp -a --no-preserve=ownership "${REO_DIR}/background.jpg" "${THEME_DIR}/${theme}/background.jpg"
-      convert -auto-orient "${THEME_DIR}/${theme}/background.jpg" "${THEME_DIR}/${theme}/background.jpg"
+    if [[ -f "${REO_DIR}/background.png" ]]; then
+      prompt -w "\n Using custom background.png as grub background image..."
+      cp -a --no-preserve=ownership "${REO_DIR}/background.png" "${THEME_DIR}/${theme}/background.png"
+      convert -auto-orient "${THEME_DIR}/${theme}/background.png" "${THEME_DIR}/${theme}/background.png"
     fi
 
     if [[ ${screen} == 'ultrawide' ]]; then
@@ -252,17 +252,9 @@ run_dialog() {
 
     tui=$(dialog --backtitle ${Project_Name} \
     --radiolist "Choose your Grub theme : " 15 40 5 \
-      1 "Vimix Theme" off  \
-      2 "Tela Theme" on \
-      3 "Stylish Theme" off  \
-      4 "Slaze Theme" off  \
-      5 "WhiteSur Theme" off --output-fd 1 )
+      1 "Kawaiki Theme" off --output-fd 1 )
       case "$tui" in
-        1) theme="vimix"      ;;
-        2) theme="tela"       ;;
-        3) theme="stylish"    ;;
-        4) theme="slaze"      ;;
-        5) theme="whitesur"   ;;
+        1) theme="kawaiki"    ;;
         *) operation_canceled ;;
      esac
 
@@ -442,24 +434,8 @@ while [[ $# -gt 0 ]]; do
       shift
       for theme in "${@}"; do
         case "${theme}" in
-          tela)
+          kawaiki)
             themes+=("${THEME_VARIANTS[0]}")
-            shift
-            ;;
-          vimix)
-            themes+=("${THEME_VARIANTS[1]}")
-            shift
-            ;;
-          stylish)
-            themes+=("${THEME_VARIANTS[2]}")
-            shift
-            ;;
-          slaze)
-            themes+=("${THEME_VARIANTS[3]}")
-            shift
-            ;;
-          whitesur)
-            themes+=("${THEME_VARIANTS[4]}")
             shift
             ;;
           -*|--*)
