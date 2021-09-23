@@ -1,13 +1,8 @@
-```
-  ____ ____  _   _ ____ ____    _____ _   _ _____ __  __ _____ ____
- / ___|  _ \| | | | __ )___ \  |_   _| | | | ____|  \/  | ____/ ___|
-| |  _| |_) | | | |  _ \ __) |   | | | |_| |  _| | |\/| |  _| \___ \
-| |_| |  _ <| |_| | |_) / __/    | | |  _  | |___| |  | | |___ ___) |
- \____|_| \_\\___/|____/_____|   |_| |_| |_|_____|_|  |_|_____|____/
+![](screenshots/grub-theme-kawaiki.jpg)
 
-```
+> Forked from [the awesome "Flat design themes" by vinceliuice](https://github.com/vinceliuice/grub2-themes).
 
-## Flat Design themes for Grub
+## Kawaiki Design themes for Grub
 
 ## Installation:
 
@@ -16,9 +11,9 @@ Usage:  `sudo ./install.sh [OPTIONS...]`
 |  Options:              | Description: |
 |:-----------------------|:-------------|
 | -b, --boot             | Install grub theme into `/boot/grub/themes` |
-| -t, --theme            | theme variant(s) [tela/vimix/stylish/slaze/whitesur] (default is tela)"
-| -i, --icon             | icon variant(s) [color/white/whitesur] (default is color)"
-| -s, --screen           | screen resolution variant(s) [1080p/2k/4k/ultrawide/ultrawide2k] (default is 1080p)"
+| -t, --theme            | theme variant(s) [kawaiki] (default is kawaiki)|
+| -i, --icon             | icon variant(s) [color/white/whitesur] (default is white) |
+| -s, --screen           | screen resolution variant(s) [1080p/2k/4k/ultrawide/ultrawide2k] (default is 1080p) |
 | -r, --remove [THEME]   | Uninstall selected theme |
 | -h, --help             | Show this help |
 
@@ -26,13 +21,13 @@ _If no options are used, a user interface `dialog` will show up instead_
 
 ### Examples:
  - Install Tela theme on 2k display device:
-   - `sudo ./install.sh -t tela -s 2k`
+   - `sudo ./install.sh -t kawaiki -s 2k`
 
  - Install Tela theme into /boot/grub/themes:
-   - `sudo ./install.sh -b -t tela`
+   - `sudo ./install.sh -b -t kawaiki`
 
  - Uninstall Tela theme:
-   - `sudo ./install.sh -r -t tela`
+   - `sudo ./install.sh -r -t kawaiki`
 
 ## Issues / tweaks:
 
@@ -59,23 +54,6 @@ _If no options are used, a user interface `dialog` will show up instead_
  - Create a pull request from your branch or fork
  - If any issues occur, report then to the [issue](https://github.com/vinceliuice/grub2-themes/issues) page
 
-## Screenshots:
-
-### Vimix grub theme:
-
-![Vimix](screenshots/grub-theme-vimix.jpg?raw=true)
-
-### Stylish grub theme:
-
-![Stylish](screenshots/grub-theme-stylish.jpg?raw=true)
-
-### Tela grub theme:
-
-![Tela](screenshots/grub-theme-tela.jpg?raw=true)
-
-### Slaze grub theme:
-
-![Slaze](screenshots/grub-theme-slaze.jpg?raw=true)
 
 ## Documents
 http://wiki.rosalab.ru/en/index.php/Grub2_theme_/_reference
